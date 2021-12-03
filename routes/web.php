@@ -50,13 +50,16 @@ Route::get('/aboutus',[About::class, 'index'])->name('aboutus');
 Route::get('/contactus',[Contact::class, 'index'])->name('contactus');
 Route::get('/signin',[Actors::class, 'signin'])->name('signin');
 Route::get('/register',[Actors::class, 'register'])->name('register');
-Route::get('/complain',[Complain::class, 'index'])->name('complain');
 Route::post('/storeUser',[Actors::class, 'storeUser']);
 Route::post('/do_login',[Actors::class, 'do_login']);
 Route::post('/storeOrder',[Order::class, 'storeOrder']);
 Route::get('/payment/{any}',[Order::class, 'payment'])->name('payment');
 Route::get('/payment',[Order::class, 'paymentList'])->name('paymentList');
 Route::post('/uploadStruk',[Order::class, 'uploadStruk'])->name('uploadStruk');
+
+Route::get('/complain',[Complain::class, 'index'])->name('complain');
+Route::post('/storeComplain',[Complain::class, 'storeComplain']);
+
 Route::get('/logout',[Actors::class, 'logout'])->name('logout');
 
 Route::get('/generatePDF/{any}', [Order::class, 'generatePDF']);

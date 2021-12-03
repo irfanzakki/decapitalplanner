@@ -57,7 +57,7 @@ class Order extends Controller
                 'm_bank.bank_name')
         ->leftJoin('t_payment', 't_order.order_id', '=', 't_payment.id')
         ->leftJoin('m_catalog', 'm_catalog.id', '=', 't_order.catalog_id')
-        ->leftJoin('d_catalog', 'm_catalog.id', '=', 'd_catalog.catalog_id')
+        ->leftJoin('d_catalog', 't_order.category_id', '=', 'd_catalog.id')
         ->leftJoin('m_bank', 'm_bank.id', '=', 't_payment.bank')
         ->where('t_order.user_id', '=', session('user_id'))
         ->latest()->paginate(10);
@@ -68,6 +68,9 @@ class Order extends Controller
     public function storeOrder(Request $request)
     {	
         if ($request->isMethod('post')) {
+            
+            $random = strtoupper(Str::random(7));
+
             $rules = [
                 'firstname' => 'required|string|min:3|max:255',
                 'lastname' => 'required|string|min:3|max:255',
@@ -88,7 +91,6 @@ class Order extends Controller
             }
             else{
                 $data = $request->input();
-                $random = strtoupper(Str::random(7));
                 $generate = '0'.$data['user_id'].date('ymd').$random;
                 $orderid = '';
                 if($data['catalog_id'] == 1){
@@ -115,7 +117,6 @@ class Order extends Controller
                     'user_id' => $data['user_id'],
                     'status' => 0,
                     'created_at' => date('Y-m-d H:i:s'),
-                    'user_id' => $data['user_id'],
                 ]);
 
                 return redirect('payment/'.$orderid)->with('status',"Insert successfully");
@@ -167,7 +168,6 @@ class Order extends Controller
                 'status' => 0,
                 'bank' => 1,
                 'created_at' => date('Y-m-d H:i:s'),
-                'user_id' => $data['user_id'],
                 'price' => $data['price'],
                 'filename' => $nama_file,
             ]);

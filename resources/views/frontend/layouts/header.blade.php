@@ -97,6 +97,10 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('contactus') }}">Contact</a>
                         </li>
+                        @if (Session::has('is_login'))
+                        @else
+                            <a class="nav-link" href="{{ route('signin') }}">Sign In</a>
+                        @endif
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">
@@ -118,11 +122,12 @@
                                 <li><hr class="dropdown-divider"></li>
                                 <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
                         </div>
+                    
+                        <a class="nav-icon position-relative text-decoration-none btn btn-success" href="{{ route('complain') }}">
+                            <i class="fa fa-fw fas fa-headset text-white mr-1"></i>
+                            <span class="text-white" style="font-size: 14px;">Complaint Center</span>
+                        </a>
                     @endif
-                    <a class="nav-icon position-relative text-decoration-none btn btn-success" href="{{ route('complain') }}">
-                        <i class="fa fa-fw fas fa-headset text-white mr-1"></i>
-                        <span class="text-white" style="font-size: 14px;">Complaint Center</span>
-                    </a>
                 </div>
             </div>
 

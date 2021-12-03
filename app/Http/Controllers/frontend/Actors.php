@@ -62,7 +62,12 @@ class Actors extends Controller
                         "email" => $users[0]->email,
                         "phone" => $users[0]->phone,
                     ]);
-                    return redirect(Session::get('last_checkout'))->with('status',"Login successfully");
+                    if (Session::has('last_checkout')){
+                        return redirect(Session::get('last_checkout'))->with('status',"Login successfully");
+                    }else{
+                        return redirect('/');
+                    }
+                    
                 }else{
                     // validation not successful, send back to form
                     return redirect('signin')->with('status',"Login Failed");

@@ -156,26 +156,6 @@ https://templatemo.com/tm-559-zay-shop
 
 
             <div class="col-lg-12">
-                <div class="row">
-                    
-                    <div class="col-md-6 pb-4">
-                        <div class="d-flex">
-                            <select class="form-control">
-                                <option>Featured</option>
-                                <option>A to Z</option>
-                                <option>Item</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                {{-- @php
-                if ($catalog->count() > 0){
-                    dd($catalog);
-                }else{
-                    echo 'aaaa';
-                }
-                   
-                @endphp --}}
                 @if ($catalog->count() == 0)
                     <div class="row">   
                         <div class="text-center">
