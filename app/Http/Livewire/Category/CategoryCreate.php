@@ -43,17 +43,18 @@ class CategoryCreate extends Component
                 'description' => 'required',
             ]);
             // $this->category->save();
+            $filenames = $this->filename->getClientOriginalName();
             Category::create([
                 'category_name' => $this->category_name,
                 'catalog_id' => $this->catalog_id,
                 'category_code' => $this->category_code,
                 'price' => $this->price,
-                'filename' => $this->filename,
+                'filename' => $filenames,
                 'discount' => $this->discount,
                 'description' => $this->description,
                 'created_date' => date('Y-m-d H:i:s')
             ]);
-            $this->filename->store('assets_frontend/img');
+            $this->filename->store('assets_frontend','img');
             $this->showSuccesNotification = true;
 
             session()->flash('message', 'Category successfully added.');

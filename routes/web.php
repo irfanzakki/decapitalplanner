@@ -82,6 +82,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/static-sign-up', StaticSignUp::class)->name('static-sign-up');
     Route::get('/rtl', Rtl::class)->name('rtl');
     Route::get('/laravel-user-profile', UserProfile::class)->name('user-profile');
+    Route::get('/laravel-user-profile/{id}', UserProfile::class)->name('user-profile-edit');
     Route::get('/laravel-user-management', UserManagement::class)->name('user-management');
     Route::get('/category-create', CategoryCreate::class)->name('category-create');
     Route::get('/category-edit/{id}', CategoryEdit::class)->name('category-edit');

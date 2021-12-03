@@ -80,11 +80,11 @@
                                             <span class="text-secondary text-xs font-weight-bold">{{ $user->created_at }}</span>
                                         </td>
                                         <td class="text-center">
-                                            <a href="#" class="mx-3" data-bs-toggle="tooltip"
+                                            <a href="{{ route('user-profile-edit',$user->id) }}" class="mx-3" data-bs-toggle="tooltip"
                                                 data-bs-original-title="Edit user">
                                                 <i class="fas fa-user-edit text-secondary"></i>
                                             </a>
-                                            <a href="#" class="mx-3" data-bs-toggle="tooltip"
+                                            <a wire:click="destroy({{ $user->id }})" class="mx-3" data-bs-toggle="tooltip"
                                                 data-bs-original-title="Delete user">
                                                 <i class="cursor-pointer fas fa-trash text-secondary"></i>
                                             </a>
