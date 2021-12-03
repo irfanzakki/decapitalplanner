@@ -14,7 +14,7 @@ class Billing extends Component
     {
         return view('livewire.order',[
             'orders' => Order::leftJoin('m_catalog', 'm_catalog.id', '=', 't_order.catalog_id')
-            ->leftJoin('d_catalog', 't_order.category_id', '=', 'd_catalog.id')
+            ->leftJoin('d_catalog', 'm_catalog.id', '=', 'd_catalog.catalog_id')
             ->select('t_order.*', 'm_catalog.catalog_name AS catalog_name', 
                     'd_catalog.category_name AS category_name',
                     'd_catalog.category_code AS cat_id')->latest()->paginate(10),
