@@ -12,6 +12,7 @@ class CategoryEdit extends Component
     public $postId;
     public $category_name;
     public $category_code;
+    public $category_type;
     public $catalog_id;
     public $price;
     public $discount;
@@ -25,6 +26,7 @@ class CategoryEdit extends Component
             $this->postId = $edit->id;
             $this->category_name = $edit->category_name;
             $this->category_code = $edit->category_code;
+            $this->category_type = $edit->category_type;
             $this->catalog_id = $edit->catalog_id;
             $this->description = $edit->description;
             $this->discount = $edit->discount;
@@ -40,6 +42,7 @@ class CategoryEdit extends Component
             $edit->update([
                 'category_name' => $this->category_name,
                 'category_code' => $this->category_code,
+                'category_type' => $this->category_type,
                 'catalog_id' => $this->catalog_id,
                 'description' => $this->description,
                 'discount' => $this->discount,

@@ -57,6 +57,19 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
+                                <label for="category_type" class="form-control-label">{{ __('Category Type') }}</label>
+                                <div class="@error('category_type')border border-danger rounded-3 @enderror">
+                                    <select wire:model="category_type" name="category_type" id="category_type"  class="form-control">
+                                        <option value="">Select Category Type ... </option>
+                                        <option value="1">Table Decoration </option>
+                                        <option value="2">Room Decoration </option>
+                                    </select>
+                                </div>
+                                @error('category_type') <div class="text-danger">{{ $message }}</div> @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
                                 <label for="price" class="form-control-label">{{ __('Price') }}</label>
                                 <div class="@error('price')border border-danger rounded-3 @enderror">
                                     <input wire:model="price" class="form-control" type="number"

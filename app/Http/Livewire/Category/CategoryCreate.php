@@ -13,6 +13,7 @@ class CategoryCreate extends Component
     public $category_name;
     public $catalog_id;
     public $category_code;
+    public $category_type;
     public $price;
     public $discount;
     public $filename;
@@ -37,6 +38,7 @@ class CategoryCreate extends Component
                 'category_name' => 'required|max:40|min:3',
                 'catalog_id' => 'required',
                 'category_code' => 'required',
+                'category_type' => 'required',
                 'price' => 'required',
                 'discount' => 'required',
                 'filename' => 'required|image|max:2048',
@@ -48,13 +50,14 @@ class CategoryCreate extends Component
                 'category_name' => $this->category_name,
                 'catalog_id' => $this->catalog_id,
                 'category_code' => $this->category_code,
+                'category_type' => $this->category_type,
                 'price' => $this->price,
                 'filename' => $filenames,
                 'discount' => $this->discount,
                 'description' => $this->description,
                 'created_date' => date('Y-m-d H:i:s')
             ]);
-            $this->filename->store('assets_frontend','img');
+            $this->filename->store('assets_frontend');
             $this->showSuccesNotification = true;
 
             session()->flash('message', 'Category successfully added.');
