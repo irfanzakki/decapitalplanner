@@ -9,5 +9,5 @@ class Order extends Model
 {
     
     protected $table = "t_order";
-    // protected $fillable = ['catalog_name','catalog_id','category_name','category_code','price','description','filename','discount'];
+    protected $fillable = ['catalog_id','order_id','category_id','firstname','lastname','email','user_id','phone','address','city','zip_code','fix_price','created_at','status','remarks','updated_at'];
 }

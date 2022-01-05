@@ -15,6 +15,10 @@ use App\Http\Livewire\StaticSignUp;
 use App\Http\Livewire\Rtl;
 use App\Http\Livewire\Category\CategoryCreate;
 use App\Http\Livewire\Category\CategoryEdit;
+use App\Http\Livewire\OrderAdmin\OrderCreate;
+use App\Http\Livewire\OrderAdmin\OrderEdit;
+use App\Http\Livewire\Complains;
+use App\Http\Livewire\ComplainReplay\Reply;
 
 
 use App\Http\Livewire\LaravelExamples\UserProfile;
@@ -74,8 +78,10 @@ Route::get('/login/forgot-password', ForgotPassword::class)->name('forgot-passwo
 Route::get('/reset-password/{id}',ResetPassword::class)->name('reset-password')->middleware('signed');
 
 Route::middleware('auth')->group(function () {
+    // dd(session());
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
     Route::get('/billing', Billing::class)->name('billing');
+    Route::get('/complains', Complains::class)->name('complains');
     Route::get('/profile', Profile::class)->name('profile');
     Route::get('/tables', Tables::class)->name('tables');
     Route::get('/static-sign-in', StaticSignIn::class)->name('sign-in');
@@ -86,6 +92,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/laravel-user-management', UserManagement::class)->name('user-management');
     Route::get('/category-create', CategoryCreate::class)->name('category-create');
     Route::get('/category-edit/{id}', CategoryEdit::class)->name('category-edit');
+    Route::get('/order-create', OrderCreate::class)->name('order-create');
+    Route::get('/order-edit/{id}', OrderEdit::class)->name('order-edit');
+    Route::get('/order-cancel/{id}', [OrderEdit::class, 'orderCancel'])->name('order-cancel');
+    Route::get('/payment-approve/{id}', [Rtl::class, 'paymentApprove'])->name('payment-approve');
+    Route::get('/payment-decline/{id}', [Rtl::class, 'paymentDecline'])->name('payment-decline');
+    Route::get('/reply-ticket/{id}', Reply::class)->name('reply-ticket');
+    Route::post('/sendEmail', [Reply::class,'sendEmail']);
+    Route::get('/delete-ticket/{id}', [Reply::class, 'deleteTicket'])->name('delete-ticket');
 });
 
 

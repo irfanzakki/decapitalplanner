@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use PDF;
+use Illuminate\Support\Facades\Session;
 
 
 
@@ -16,7 +17,12 @@ class Order extends Controller
 {
     public function index()
     {   
-        return view('frontend.order');
+        if (session('role') == 'admin') {
+        
+            auth()->logout();
+        }else{
+            return view('frontend.order');
+        }
     }
 
     public function payment(Request $request,$id)
@@ -35,8 +41,9 @@ class Order extends Controller
         $bank = DB::table('m_bank')
             ->select('*')
             ->first();
+        
+            return view('frontend.payment',['orders' => $order,'bank' => $bank]);
             
-        return view('frontend.payment',['orders' => $order,'bank' => $bank]);
     }
 
     public function paymentList(Request $request)
@@ -61,8 +68,14 @@ class Order extends Controller
         ->leftJoin('m_bank', 'm_bank.id', '=', 't_payment.bank')
         ->where('t_order.user_id', '=', session('user_id'))
         ->latest()->paginate(10);
-            
-        return view('frontend.paymentlist',['orders' => $orders]);
+        
+        if (session('role') == 'admin') {
+        
+            Session::flush();
+            return redirect('/');
+        }else{
+            return view('frontend.paymentlist',['orders' => $orders]);
+        }
     }
 
     public function storeOrder(Request $request)

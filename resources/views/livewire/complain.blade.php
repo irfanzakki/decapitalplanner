@@ -168,11 +168,7 @@
                     @endif
               <div class="row">
                 <div class="col-md-10">
-                  <h6>Order List Table</h6>
-    
-                </div>
-                <div class="col-md-2">
-                  <a href="{{ route('order-create') }}" class="btn btn-info btn-sm text-white pull-right">Add Order</a>
+                  <h6>Complain List Table</h6>
                 </div>
                 
               </div>
@@ -183,14 +179,13 @@
                   <thead>
                     <tr class="text-center">
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">#</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Ticket Number</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Order ID</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Category</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Item</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Client name</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Price</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Create Date</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Update Date</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Status</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Email</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Phone Number</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Description</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Date Created</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Action</th>
                       <th></th>
                     </tr>
@@ -204,48 +199,21 @@
                         
                         <tr class="text-center">
                             <td scope="row">{{ $no }}</td>
+                            <td>{{ $order->ticket }}</td>
                             <td>{{ $order->order_id }}</td>
-                            <td>{{ $order->catalog_name }}</td>
-                            <td>{{ $order->cat_id }}</td>
-                            <td>{{ $order->user_id }}</td>
-                            <td>{{ $order->fix_price }}</td>
+                            <td>{{ $order->name }}</td>
+                            <td>{{ $order->email }}</td>
+                            <td>{{ $order->phone }}</td>
+                            <td>{{ $order->description }}</td>
                             <td>{{ $order->created_at }}</td>
-                            <td>{{ $order->updated_at }}</td>
+                            
                             <td>
-                                @if ($order->status == 0)
-                                    <span class="badge bg-success text-dark">Waiting Payment</span>
-                                @elseif ($order->status == 1)
-                                    <span class="badge bg-success text-dark">Pending</span>
-                                @elseif ($order->status == 3)
-                                    <span class="badge bg-danger text-dark">Cancel</span>
-                                @else
-                                    <span class="badge bg-success text-dark">Done</span>
-                                @endif
-                                
-                                {{-- <a href="{{ route('category-edit',$order->id) }}" class="btn btn-warning btn-sm text-white"><i class="fa fa-edit fa-fw"></i> {{ $order-$order->status }}</a> --}}
-                            </td>
-                            <td>
-                                {{-- @if ($order->status  == 3)
-                                  
-                                <a href="{{ route('category-edit',$order->id) }}" class="btn btn-info btn-sm text-white"><i class="fa fa-edit fa-fw"></i> Edit</a>
-                                @endif --}}
                                 @if ($order->status  != 2 )
-                                    <a href="{{ route('order-edit',$order->id) }}" class="btn btn-info btn-sm text-white"><i class="fa fa-edit fa-fw"></i> Edit</a>
+                                    <a href="{{ route('reply-ticket',$order->id) }}" class="btn btn-info btn-sm text-white"><i class="fa fa-edit fa-fw"></i> Reply</a>
                                     @if ($order->status  != 3)
-                                        <a href="{{ route('order-cancel',$order->id) }}" class="btn btn-danger btn-sm text-white"><i class="fa fa-edit fa-fw"></i> Cancel</a>
+                                        <a href="{{ route('delete-ticket',$order->complain_id) }}" onclick="return confirm('Are you sure?')" class="btn btn-danger btn-sm text-white"><i class="fa fa-edit fa-fw"></i> Delete</a>
                                     @endif
-                                    
-                                    
-                                @endif
-
-                                @if ($order->status == 2)
-                                    <a href="{{ route('order-edit',$order->id) }}" class="btn btn-success btn-sm text-white"><i class="fa fa-edit fa-fw"></i> Invoice</a>
-                                @endif
-                                
-                                
-                            
-                            
-                            
+                                @endif            
                             </td>
                         </tr>
                         @php

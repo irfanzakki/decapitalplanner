@@ -4,12 +4,51 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Payment;
+use App\Models\Order;
 use Livewire\WithPagination;
 use Illuminate\Http\Request;
 
 class Rtl extends Component
 {
     use WithPagination;
+    public function paymentApprove($id){
+        $edit = Payment::find($id);
+        $order = Order::find($edit->order_id);
+        
+        if ($edit) {
+            
+            $edit->update([
+                'status' => 1,
+                'updated_at' => date('Y-m-d H:i:s')
+            ]);
+
+            $order->update([
+                'status' => 2,
+                'updated_at' => date('Y-m-d H:i:s')
+            ]);
+            session()->flash('message', 'Payment successfully approved.');
+            return redirect()->route('rtl');
+        }
+    }
+    public function paymentDecline($id){
+        $edit = Payment::find($id);
+        $order = Order::find($edit->order_id);
+        if ($edit) {
+            
+            $edit->update([
+                'remarks' => 'Data Has been Canceled by Admin',
+                'status' => 2,
+                'updated_at' => date('Y-m-d H:i:s')
+            ]);
+            $order->update([
+                'remarks' => 'Data Has been Canceled by Admin',
+                'status' => 3,
+                'updated_at' => date('Y-m-d H:i:s')
+            ]);
+            session()->flash('message', 'Payment successfully declined.');
+            return redirect()->route('rtl');
+        }
+    }
     public function render(Request $request)
     {
         return view('livewire.rtl',[

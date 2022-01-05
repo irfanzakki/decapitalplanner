@@ -28,6 +28,16 @@ class Login extends Component
         if(auth()->attempt(['email' => $this->email, 'password' => $this->password], $this->remember_me)) {
             $user = User::where(["email" => $this->email,"role" => 'admin'])->first();
             auth()->login($user, $this->remember_me);
+            session([
+                'is_login' => 'true',
+                "user_id" => $user->id,
+                "firstname" => $user->firstname,
+                "lastname" => $user->lastname,
+                "email" => $user->email,
+                "phone" => $user->phone,
+                "role" => $user->role,
+            ]);
+
             return redirect()->intended('/dashboard');        
         }
         else{

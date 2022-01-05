@@ -226,10 +226,12 @@
                             </td>
                             <td>
                                 
-                                @if ($payment->status  == 0 || $payment->status  == 2)
-                                    <a href="{{ route('category-edit',$payment->id) }}" class="btn btn-info btn-sm text-white"><i class="fa fa-edit fa-fw"></i> Approve</a>
-                                    <a href="{{ route('category-edit',$payment->id) }}" class="btn btn-danger btn-sm text-white"><i class="fa fa-edit fa-fw"></i> Decline</a>
-
+                                @if ($payment->status  == 0 )
+                                    <a href="{{ route('payment-approve',$payment->id) }}" class="btn btn-info btn-sm text-white"><i class="fa fa-edit fa-fw"></i> Approve</a>
+                                    <a href="{{ route('payment-decline',$payment->id) }}" class="btn btn-danger btn-sm text-white"><i class="fa fa-edit fa-fw"></i> Decline</a>
+                                @endif
+                                @if ($payment->status  == 2)
+                                    <a href="{{ route('payment-approve',$payment->id) }}" class="btn btn-info btn-sm text-white"><i class="fa fa-edit fa-fw"></i> Approve</a>
                                 @endif
                             </td>
                         </tr>
