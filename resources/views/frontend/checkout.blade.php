@@ -135,6 +135,15 @@
                   </small>
                 </div>
             </div>
+            <div class="col-12">
+              <label for="notes" class="form-label">Notes</label>
+              <textarea type="text" class="form-control" id="notes" name="notes" placeholder="Please add your notes if any"></textarea>
+              <div class="invalid-feedback">
+                  <small>
+                    Please enter your notes if any.
+                  </small>
+                </div>
+            </div>
           </div>
 
           <button class="w-100 btn btn-primary btn-lg mt-5" type="submit">Continue to payment</button>

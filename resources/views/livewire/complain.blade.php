@@ -223,7 +223,7 @@
                   </tbody>
                   
                 </table>
-                <div class="d-flex justify-content-center">{{ $orders->links() }}</div>
+                <div class="d-flex justify-content-center mt-5">{{ $orders->links('pagination::bootstrap-4') }}</div>
                 
                 
               </div>

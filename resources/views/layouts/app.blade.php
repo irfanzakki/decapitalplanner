@@ -11,7 +11,7 @@
             @include('layouts.navbars.guest.login')
             {{ $slot }}
             @include('layouts.footers.guest.description')
-        @elseif (in_array(request()->route()->getName(),['profile', 'my-profile'],))
+        @elseif (in_array(request()->route()->getName(),['my-profile'],))
             @include('layouts.navbars.auth.sidebar')
             <div class="main-content position-relative bg-gray-100">
                 @include('layouts.navbars.auth.nav-profile')

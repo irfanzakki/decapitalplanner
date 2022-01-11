@@ -3,7 +3,7 @@
     <!-- Start Content -->
     <div class="container py-5">
         <div class="row">
-            <form action="index" method="GET">
+            <form method="GET">
                 <div class="row">
                     <div class="col-md-5">
                         <input type="hidden" name="category_id" value="{{isset($catalog[0]) ? $catalog[0]->catalog_id : ''}}">
@@ -14,7 +14,7 @@
                             
                         </select>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-2 mb-5">
                         <input type="submit" class="btn btn-danger btn-sm filterSearch" value="Filter">
                     </div>
                     

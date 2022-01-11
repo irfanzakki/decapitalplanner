@@ -201,11 +201,11 @@
                         // $no = 1 ;
                     @endphp
                     @foreach ($orders as $order)
-                        
+                       
                         <tr class="text-center">
                             <td scope="row">{{ $no }}</td>
                             <td>{{ $order->order_id }}</td>
-                            <td>{{ $order->catalog_name }}</td>
+                            <td>{{ $order->category_name }}</td>
                             <td>{{ $order->cat_id }}</td>
                             <td>{{ $order->user_id }}</td>
                             <td>{{ $order->fix_price }}</td>
@@ -239,7 +239,7 @@
                                 @endif
 
                                 @if ($order->status == 2)
-                                    <a href="{{ route('order-edit',$order->id) }}" class="btn btn-success btn-sm text-white"><i class="fa fa-edit fa-fw"></i> Invoice</a>
+                                    <a href="{{ route('billing/generatePDF',$order->id) }}" class="btn btn-success btn-sm text-white"><i class="fa fa-edit fa-fw"></i> Invoice</a>
                                 @endif
                                 
                                 
@@ -255,7 +255,7 @@
                   </tbody>
                   
                 </table>
-                <div class="d-flex justify-content-center">{{ $orders->links() }}</div>
+                <div class="d-flex justify-content-center mt-5">{{ $orders->links('pagination::bootstrap-4') }}</div>
                 
                 
               </div>

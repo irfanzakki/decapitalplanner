@@ -11,36 +11,27 @@ use Illuminate\Database\Query\Builder;
 class Events extends Controller
 {
     
+    // public function __construct(){
+    //     session(['category_id' => url()->current(2)]);
+    // }
     public $filter ;
     public $saveData;
     public function index(Request $request,$id)
     {   
-        
+        // dd($request->query());
         $this->filter = $id;
         
         $users = DB::table('d_catalog')
             ->select('d_catalog.*','category_type.type')
-            ->leftJoin('category_type', 'category_type.id', '=', 'd_catalog.category_type');
-            // ->where('d_catalog.catalog_id', '=', $id)
-            // ->where( function($query) use($request){
-            //     return $request->type ?
-            //            $query->from('d_catalog')->where('d_catalog.category_type',$request->type) : '';
-            // })->where( function($query) use($request,$id){
-            //     return $request->category_id ?
-            //            $query->from('d_catalog')->where('d_catalog.catalog_id',$request->category_id) : $query->from('d_catalog')->where('d_catalog.catalog_id', $id);
-            // })->get();
-
-            if( $id != 'index') {
-                $users = $users->where('d_catalog.catalog_id', $id);
-            } 
-            if( $request->type) {
-                $users = $users->where('d_catalog.category_type',$request->type);
-            } 
-            if( $request->category_id) {
-                $users = $users->where('d_catalog.catalog_id',$request->category_id);
-            } 
-
-            $users =$users->get();
+            ->leftJoin('category_type', 'category_type.id', '=', 'd_catalog.category_type')
+            ->where('d_catalog.catalog_id', '=', $id)
+            ->where( function($query) use($request){
+                return $request->type ?
+                       $query->from('d_catalog')->where('d_catalog.category_type',$request->type) : '';
+            })->where( function($query) use($request,$id){
+                return $request->category_id ?
+                       $query->from('d_catalog')->where('d_catalog.catalog_id',$request->category_id) : $query->from('d_catalog')->where('d_catalog.catalog_id', $id);
+            })->get();
 
         return view('frontend.event',['catalog' => $users]);
     }
@@ -53,10 +44,7 @@ class Events extends Controller
             ->select('d_catalog.*','category_type.type')
             ->leftJoin('category_type', 'category_type.id', '=', 'd_catalog.category_type')
             ->where('d_catalog.id', '=', $id)
-            ->get();
-
-        // dd($users);
-        
+            ->get();        
 
         return view('frontend.eventdetails',['catalog' => $users]);
     }

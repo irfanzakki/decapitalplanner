@@ -194,8 +194,8 @@
                   </thead>
                   <tbody>
                     @php
-                    // $no = (($payments->currentPage() * 10) - 10)+1 ;
-                        $no = 1 ;
+                    $no = (($payments->currentPage() * 10) - 10)+1 ;
+                        // $no = 1 ;
                         $status = 4;
                     @endphp
                     @foreach ($payments as $payment)
@@ -242,7 +242,7 @@
                   </tbody>
                   
                 </table>
-                <div class="d-flex justify-content-center">{{ $payments->links() }}</div>
+                <div class="d-flex justify-content-center mt-5">{{ $payments->links('pagination::bootstrap-4') }}</div>
                 
                 
               </div>

@@ -28,10 +28,6 @@ class CategoryCreate extends Component
         'created_date' => '',
     ];
 
-    // public function mount() { 
-    //     $this->category = new Category();
-    // }
-
     public function save() {
 
             $this->validate([
@@ -54,7 +50,7 @@ class CategoryCreate extends Component
                 'price' => $this->price,
                 'filename' => $filenames,
                 'discount' => $this->discount,
-                'description' => $this->description,
+                'dexscription' => $this->description,
                 'created_date' => date('Y-m-d H:i:s')
             ]);
             $this->filename->store('assets_frontend');
@@ -62,7 +58,6 @@ class CategoryCreate extends Component
 
             session()->flash('message', 'Category successfully added.');
             $this->reset();
-        
     }
 
     public function render()

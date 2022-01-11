@@ -92,6 +92,7 @@ class Order extends Controller
                 'address' => 'required|string|max:255',
                 'city' => 'required|string',
                 'zip_code' => 'required|numeric',
+                'notes' => 'max:300',
                 
             ];
             
@@ -128,6 +129,7 @@ class Order extends Controller
                     'catalog_id' => $data['catalog_id'],
                     'category_id' => $data['category_id'],
                     'user_id' => $data['user_id'],
+                    'notes' => $data['notes'],
                     'status' => 0,
                     'created_at' => date('Y-m-d H:i:s'),
                 ]);

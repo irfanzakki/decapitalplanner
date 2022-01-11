@@ -21,6 +21,7 @@ use App\Http\Livewire\Complains;
 use App\Http\Livewire\ComplainReplay\Reply;
 
 
+
 use App\Http\Livewire\LaravelExamples\UserProfile;
 use App\Http\Livewire\LaravelExamples\UserManagement;
 
@@ -77,8 +78,8 @@ Route::get('/login/forgot-password', ForgotPassword::class)->name('forgot-passwo
  
 Route::get('/reset-password/{id}',ResetPassword::class)->name('reset-password')->middleware('signed');
 
-Route::middleware('auth')->group(function () {
-    // dd(session());
+Route::middleware('auth')->group(function () { //admin panel routes
+
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
     Route::get('/billing', Billing::class)->name('billing');
     Route::get('/complains', Complains::class)->name('complains');
@@ -100,6 +101,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/reply-ticket/{id}', Reply::class)->name('reply-ticket');
     Route::post('/sendEmail', [Reply::class,'sendEmail']);
     Route::get('/delete-ticket/{id}', [Reply::class, 'deleteTicket'])->name('delete-ticket');
+    Route::get('billing/generatePDF/{id}', [Billing::class, 'generatePDF'])->name('billing/generatePDF');
+    Route::get('billing/downloadPDF', [Profile::class, 'downloadPDF'])->name('billing/downloadPDF');
 });
 
 

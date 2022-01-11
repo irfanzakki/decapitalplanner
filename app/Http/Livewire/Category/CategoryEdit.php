@@ -38,7 +38,13 @@ class CategoryEdit extends Component
     public function update(){
         $edit = Category::find($this->postId);
         if ($edit) {
-            $filenames = $this->filename->getClientOriginalName();
+            if (!empty($filenames)) {
+                $filenames = $this->filename->getClientOriginalName();
+                $this->filename->store('assets_frontend');
+            }else{
+                $filenames = $edit->filename;
+            }
+            
             $edit->update([
                 'category_name' => $this->category_name,
                 'category_code' => $this->category_code,
@@ -50,7 +56,7 @@ class CategoryEdit extends Component
                 'filename' => $filenames,
                 'updated_date' => date('Y-m-d H:i:s')
             ]);
-            $this->filename->store('assets_frontend');
+            
             session()->flash('message', 'Category successfully updated.');
             return redirect()->route('tables');
         }
