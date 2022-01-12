@@ -53,7 +53,7 @@ class Rtl extends Component
     {
         return view('livewire.rtl',[
             'payments' => Payment::leftJoin('t_order', 't_payment.order_id', '=', 't_order.id')
-            ->leftJoin('d_catalog', 'd_catalog.id', '=', 't_order.catalog_id')
+            ->leftJoin('d_catalog', 'd_catalog.id', '=', 't_order.category_id')
             ->leftJoin('m_catalog', 'm_catalog.id', '=', 'd_catalog.catalog_id')
             ->leftJoin('m_bank', 'm_bank.id', '=', 't_payment.bank')
             ->select('t_payment.*','t_order.fix_price as price','t_order.order_id as order_id', 'm_catalog.catalog_name AS catalog_name', 

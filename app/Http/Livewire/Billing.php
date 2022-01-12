@@ -67,9 +67,10 @@ class Billing extends Component
     public function render(Request $request)
     {
         return view('livewire.order',[
-            'orders' => Order::leftJoin('d_catalog', 'd_catalog.id', '=', 't_order.catalog_id')
+            'orders' => Order::leftJoin('d_catalog', 'd_catalog.id', '=', 't_order.category_id')
             ->leftJoin('m_catalog', 'm_catalog.id', '=', 'd_catalog.catalog_id')
-            ->select('t_order.*', 'm_catalog.catalog_name AS catalog_name', 
+            ->leftJoin('users', 'users.id', '=', 't_order.user_id')
+            ->select('t_order.*', 'm_catalog.catalog_name AS catalog_name', 'users.name',
                     'd_catalog.category_name AS category_name',
                     'd_catalog.category_code AS cat_id')->latest()->paginate(10),
         ]);

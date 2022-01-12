@@ -77,11 +77,10 @@ class Dashboard extends Component
                 }
             }
             // dd($cat1);
-
+            // ->where('t_order.created_at','=',date('Y-m'))
             return view('livewire.dashboard',[
                 'activeorder' => Order::leftJoin('users', 'users.id', '=', 't_order.user_id')
                                 ->select('t_order.*','t_order.id as id_order','users.id','users.name','users.email','users.phone')
-                                // ->where('t_order.created_at','=',date('Y-m'))
                                 ->where(DB::raw('YEAR(t_order.created_at)'),'=',date('Y'))
                                 ->where(DB::raw('MONTH(t_order.created_at)'),'=',date('m'))
                                 ->latest()->paginate(10),

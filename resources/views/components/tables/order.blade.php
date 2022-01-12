@@ -207,7 +207,7 @@
                             <td>{{ $order->order_id }}</td>
                             <td>{{ $order->category_name }}</td>
                             <td>{{ $order->cat_id }}</td>
-                            <td>{{ $order->user_id }}</td>
+                            <td>{{ ucfirst($order->name) }}</td>
                             <td>{{ $order->fix_price }}</td>
                             <td>{{ $order->created_at }}</td>
                             <td>{{ $order->updated_at }}</td>
