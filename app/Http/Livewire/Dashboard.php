@@ -29,12 +29,22 @@ class Dashboard extends Component
                     ->where(DB::raw('MONTH(t_order.created_at)'),'=',date('m'))
                     ->get();
             foreach ($getall as $key => $order) {
-                $jumlah[] = $order->fix_price;
-                $totalorder[] = $order->id_order;
+                // $jumlah[] = $order->fix_price;
                 if ($order->status == 2) {
                     $income[] = $order->fix_price;
                 }
             }
+
+            $getheader = Order::leftJoin('users', 'users.id', '=', 't_order.user_id')
+                    ->select('t_order.*','t_order.id as id_order','users.id','users.name','users.email','users.phone')
+                    // ->whereDate('t_order.created_atx','=',date('Y-m-d'))
+                    ->where(DB::raw('DATE(t_order.created_at)'),'=',"'".date('Y-m-d')."'")
+                    ->get();
+                    foreach ($getheader as $key => $order) {
+                        $jumlah[] = $order->fix_price;
+                        $totalorder[] = $order->id_order;
+                    }
+
             $orders = count($totalorder);
 
             $datachart1 = Order::select(DB::raw('YEAR(created_at),MONTH(created_at) AS a,COUNT(id) AS TOTALCOUNT '))
