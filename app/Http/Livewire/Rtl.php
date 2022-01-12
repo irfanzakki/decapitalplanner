@@ -56,7 +56,8 @@ class Rtl extends Component
             ->leftJoin('d_catalog', 'd_catalog.id', '=', 't_order.category_id')
             ->leftJoin('m_catalog', 'm_catalog.id', '=', 'd_catalog.catalog_id')
             ->leftJoin('m_bank', 'm_bank.id', '=', 't_payment.bank')
-            ->select('t_payment.*','t_order.fix_price as price','t_order.order_id as order_id', 'm_catalog.catalog_name AS catalog_name', 
+            ->leftJoin('users', 'users.id', '=', 't_order.user_id')
+            ->select('t_payment.*','t_order.fix_price as price','t_order.order_id as order_id', 'm_catalog.catalog_name AS catalog_name', 'users.name',
                     'd_catalog.category_name AS category_name',
                     'd_catalog.category_code AS cat_id',
                     'm_bank.bank_name')

@@ -50,10 +50,10 @@ class CategoryCreate extends Component
                 'price' => $this->price,
                 'filename' => $filenames,
                 'discount' => $this->discount,
-                'dexscription' => $this->description,
+                'description' => $this->description,
                 'created_date' => date('Y-m-d H:i:s')
             ]);
-            $this->filename->store('assets_frontend');
+            $this->filename->storeAs('public/new_assets_frontend',$filenames);
             $this->showSuccesNotification = true;
 
             session()->flash('message', 'Category successfully added.');

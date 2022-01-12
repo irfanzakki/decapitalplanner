@@ -204,13 +204,15 @@
                             <th scope="row">{{ $no }}</td>
                             <td>{{ $payment->order_id }}</td>
                             <td>{{ $payment->cat_id }}</td>
-                            <td>{{ $payment->user_id }}</td>
+                            <td>{{ $payment->name }}</td>
                             <td>{{ $payment->price }}</td>
                             <td>{{ $payment->bank_name }}</td>
                             <td>{{ $payment->created_at }}</td>
                             <td>{{ $payment->updated_at }}</td>
                             <td>
-                            <a data-src="./../assets_frontend/img/{{$payment->filename}}" class="myImg">{{ $payment->filename }}</a>
+                              
+                            {{-- <a data-src="./../assets_frontend/img/data_file/{{$payment->filename}}" class="myImg">{{ $payment->filename }}</a> --}}
+                            <a data-src="{{asset('data_file/'.$payment->filename)}}" class="myImg">{{ $payment->filename }}</a>
                             </td>
                             <td>
                                 @if ($payment->status == 0)

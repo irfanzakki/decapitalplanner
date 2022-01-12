@@ -38,9 +38,10 @@ class CategoryEdit extends Component
     public function update(){
         $edit = Category::find($this->postId);
         if ($edit) {
-            if (!empty($filenames)) {
+            // dd($this->filename);
+            if ($this->filename != $edit->filename) {
                 $filenames = $this->filename->getClientOriginalName();
-                $this->filename->store('assets_frontend');
+                $this->filename->storeAs('public/new_assets_frontend',$filenames);
             }else{
                 $filenames = $edit->filename;
             }

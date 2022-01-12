@@ -35,7 +35,7 @@ class Billing extends Component
                 'users.phone AS user_phone',
                 'm_bank.bank_name')
         ->leftJoin('t_payment', 't_order.order_id', '=', 't_payment.id')
-        ->leftJoin('m_catalog', 'm_catalog.id', '=', 't_order.catalog_id')
+        ->leftJoin('m_catalog', 'm_catalog.id', '=', 't_order.category_id')
         ->leftJoin('d_catalog', 'm_catalog.id', '=', 'd_catalog.catalog_id')
         ->leftJoin('m_bank', 'm_bank.id', '=', 't_payment.bank')
         ->leftJoin('users', 'users.id', '=', 't_order.user_id')

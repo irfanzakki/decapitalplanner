@@ -226,7 +226,8 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
                         <td>{{ $catalog->created_at }}</td>
                         <td>{{ $catalog->updated_at }}</td>
                         <td>
-                          <a data-src="./../assets_frontend/img/{{$catalog->filename}}" class="myImg">{{ $catalog->filename }}</a>
+                          <a data-src="{{asset('storage/new_assets_frontend/'.$catalog->filename)}}" class="myImg">{{ $catalog->filename }}</a>
+                          
                         </td>
                         <td>
                           <a href="{{ route('category-edit',$catalog->id) }}" class="btn btn-info btn-sm text-white"><i class="fa fa-edit fa-fw"></i> Edit</a>
