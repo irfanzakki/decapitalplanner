@@ -31,7 +31,7 @@ class Dashboard extends Component
             foreach ($getall as $key => $order) {
                 $jumlah[] = $order->fix_price;
                 $totalorder[] = $order->id_order;
-                if ($order->status == 1) {
+                if ($order->status == 2) {
                     $income[] = $order->fix_price;
                 }
             }
