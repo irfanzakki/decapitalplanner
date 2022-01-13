@@ -32,7 +32,7 @@
             <div>
               <h6 class="my-0">Product name</h6>
               <small class="text-muted">{{$order[0]->category_name}}</small>
-              <img class="justify-content-middle imgdecapital" style="margin-top: 10px;" src="./../assets_frontend/img/{{$order[0]->filename}}" alt="">
+              <img class="justify-content-middle imgdecapital" style="margin-top: 10px;" src="{{asset('storage/new_assets_frontend/'.$order[0]->filename)}}" alt="">
             </div>
             <span class="text-muted text-nowrap">Rp. {{$order[0]->price}}</span>
           </li>

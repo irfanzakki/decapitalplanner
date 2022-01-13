@@ -34,7 +34,9 @@
                             <div class="col-md-3">
                                 <div class="card mb-4 product-wap rounded-0">
                                     <div class="card rounded-0">
-                                        <img style="min-height: 403px;" class="card-img rounded-0" src="../assets_frontend/img/{{ $item->filename }}">
+                                        {{-- <a data-src="{{asset('storage/new_assets_frontend/'.$catalog->filename)}}" class="myImg">{{ $catalog->filename }}</a>
+                                        <img style="min-height: 403px;" class="card-img rounded-0" src="../assets_frontend/img/{{ $item->filename }}"> --}}
+                                        <img style="min-height: 403px;" class="card-img rounded-0" src="{{asset('storage/new_assets_frontend/'.$item->filename)}}">
                                         <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                             <ul class="list-unstyled">
                                                 <li><a class="btn btn-success text-white mt-2" href="{{ route('events-detail',$item->id) }}"><i class="far fa-eye"></i></a></li>

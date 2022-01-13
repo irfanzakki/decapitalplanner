@@ -22,7 +22,7 @@
             <div class="row">
                 <div class="col-lg-5 mt-5">
                     <div class="card mb-3">
-                        <img class="card-img img-fluid" src="../assets_frontend/img/{{$catalog[0]->filename}}" alt="Card image cap" id="product-detail">
+                        <img class="card-img img-fluid" src="{{asset('storage/new_assets_frontend/'.$catalog[0]->filename)}}" alt="Card image cap" id="product-detail">
                     </div>
                 </div>
                 

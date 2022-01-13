@@ -14,10 +14,6 @@ class StaticSignIn extends Component
     public $filenames;
     public $showSuccesNotification  = false;
 
-    // protected $rules = [
-    //     'filename' => 'required',
-    //     'description' => 'required',
-    // ];
 
     public function save() {
             $this->validate([
@@ -27,7 +23,6 @@ class StaticSignIn extends Component
             
             // $filenames = $this->filename->getClientOriginalName();
             $file = $this->filenames->getClientOriginalName();
-                
             $this->filenames->store('assets_frontend/gallery',encrypt($file));
             
             Gallery::create([
