@@ -22,6 +22,7 @@ class OrderEdit extends Component
     public $city;
     public $zipcode;
     public $address;
+    public $notes;
     public $catalog_id;
     public $category_id;
     public $categories = [];
@@ -39,6 +40,7 @@ class OrderEdit extends Component
             $this->name = $edit->user_id;
             $this->phone = $edit->phone;
             $this->address = $edit->address;
+            $this->notes = $edit->notes;
             $this->city = $edit->city;
             $this->zipcode = $edit->zip_code;
         }
@@ -69,6 +71,7 @@ class OrderEdit extends Component
                 'user_id' => $this->name,
                 'phone' => $this->phone,
                 'address' => $this->address,
+                'notes' => $this->notes,
                 'city' => $this->city,
                 'zip_code' => $this->zipcode,
                 'fix_price' => $category_item->price - ($category_item->discount * $category_item->price)/100,

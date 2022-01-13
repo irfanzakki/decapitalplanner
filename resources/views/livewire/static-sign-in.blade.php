@@ -163,6 +163,18 @@
     .hover-shadow:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
+
+    .deleteImg{
+        border: 1px solid red;
+        padding: 0px 5px;
+        border-radius: 5px;
+        background-color: red;
+        color: white;
+        position: relative;
+        top: 30px;
+        left: 5px;
+        cursor: pointer;
+    }
     </style>
 
     <div class="modal"  id="myModal" tabindex="-1">
@@ -249,7 +261,11 @@
                 @else 
                     @foreach ($gallery as $key => $item)
                         <div class="col-md-2 pb-3">
-                            <img src="./../assets_frontend/gallery/{{$item->filename}}" class="myImg img-thumbnail" alt="{{$item->description}}">
+                            <div>
+                                
+                            <a href="deleteimage/{{$item->id}}" class="deleteImg">&times;</a>
+                            <img src="{{asset('storage/assets_frontend/gallery/'.$item->filename)}}" class="myImg img-thumbnail" alt="{{$item->description}}">
+                            </div>
                             
                         </div>
                     @endforeach
@@ -299,5 +315,6 @@
         
         $('#uploadModal').hide();
     })
+
     
     </script>

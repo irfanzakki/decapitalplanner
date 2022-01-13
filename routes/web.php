@@ -86,6 +86,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', Profile::class)->name('profile');
     Route::get('/tables', Tables::class)->name('tables');
     Route::get('/galleries', StaticSignIn::class)->name('galleries');
+    Route::get('/deleteimage/{id}', [StaticSignIn::class,'deleteImage'])->name('deleteimage');
     Route::get('/static-sign-up', StaticSignUp::class)->name('static-sign-up');
     Route::get('/rtl', Rtl::class)->name('rtl');
     Route::get('/laravel-user-profile', UserProfile::class)->name('user-profile');

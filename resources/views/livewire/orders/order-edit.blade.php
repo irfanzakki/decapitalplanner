@@ -25,8 +25,8 @@
                                 <div class="@error('catalog_id')border border-danger rounded-3 @enderror">
                                     <select wire:model="catalog_id" name="catalog_id" id="catalog_id"  class="form-control">
                                         <option value="">Select Catalog ... </option>
-                                        <option value="1">Bridal Shower </option>
-                                        <option value="2">Birthday Party </option>
+                                        <option value="1">Birthday Party </option>
+                                        <option value="2">Bridal Shower </option>
                                         <option value="3">Baby Shower </option>
                                     </select>
                                 </div>
@@ -95,7 +95,7 @@
                                 <label for="email" class="form-control-label">{{ __('Email') }}</label>
                                 <div class="@error('email')border border-danger rounded-3 @enderror">
                                     <input wire:model="email" class="form-control" type="text"
-                                        placeholder="Input email" id="email" max="100">
+                                        placeholder="Input email" id="email">
                                 </div>
                                 @error('email') <div class="text-danger">{{ $message }}</div> @enderror
                             </div>
@@ -105,7 +105,7 @@
                                 <label for="phone" class="form-control-label">{{ __('Phone Number') }}</label>
                                 <div class="@error('phone')border border-danger rounded-3 @enderror">
                                     <input wire:model="phone" class="form-control" type="number"
-                                        placeholder="Input phone" id="phone" max="100">
+                                        placeholder="Input phone" id="phone">
                                 </div>
                                 @error('phone') <div class="text-danger">{{ $message }}</div> @enderror
                             </div>
@@ -132,7 +132,7 @@
                                 <label for="zipcode" class="form-control-label">{{ __('Zipcode') }}</label>
                                 <div class="@error('zipcode')border border-danger rounded-3 @enderror">
                                     <input wire:model="zipcode" class="form-control" type="number"
-                                        placeholder="Input zipcode" id="zipcode" max="100">
+                                        placeholder="Input zipcode" id="zipcode">
                                 </div>
                                 @error('zipcode') <div class="text-danger">{{ $message }}</div> @enderror
                             </div>
@@ -145,6 +145,16 @@
                                         placeholder="Input client address"></textarea>
                                 </div>
                                 @error('address') <div class="text-danger">{{ $message }}</div> @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="notes">{{ 'Notes' }}</label>
+                                <div class="@error('notes')border border-danger rounded-3 @enderror">
+                                    <textarea wire:model="notes" class="form-control" id="notes" rows="3"
+                                        placeholder="Input client notes"></textarea>
+                                </div>
+                                @error('notes') <div class="text-danger">{{ $message }}</div> @enderror
                             </div>
                         </div>
                     </div>

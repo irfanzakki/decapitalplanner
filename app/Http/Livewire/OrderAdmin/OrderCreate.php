@@ -22,6 +22,7 @@ class OrderCreate extends Component
     public $city;
     public $zipcode;
     public $address;
+    public $notes;
     public $catalog_id;
     public $category_id;
     public $categories = [];
@@ -37,6 +38,7 @@ class OrderCreate extends Component
         'email' => 'required',
         'phone' => 'required',
         'address' => 'required',
+        'notes' => '',
         'city' => 'required',
         'zipcode' => 'required',
     ];
@@ -56,6 +58,7 @@ class OrderCreate extends Component
                 'email' => 'required',
                 'phone' => 'required',
                 'address' => 'required',
+                'notes' => '',
                 'city' => 'required',
                 'zipcode' => 'required',
             ]);
@@ -82,6 +85,7 @@ class OrderCreate extends Component
                 'user_id' => $this->name,
                 'phone' => $this->phone,
                 'address' => $this->address,
+                'notes' => $this->notes,
                 'city' => $this->city,
                 'zip_code' => $this->zipcode,
                 'fix_price' => $category_item->price - ($category_item->discount * $category_item->price)/100,

@@ -23,7 +23,7 @@ class StaticSignIn extends Component
             
             // $filenames = $this->filename->getClientOriginalName();
             $file = $this->filenames->getClientOriginalName();
-            $this->filenames->store('assets_frontend/gallery',encrypt($file));
+            $this->filenames->storeAs('public/assets_frontend/gallery',$file);
             
             Gallery::create([
                 
@@ -40,8 +40,19 @@ class StaticSignIn extends Component
             
             $this->showSuccesNotification = true;
             $this->reset();
-            session()->flash('message', 'Category successfully added.');
-             return redirect()->route('gallery');
+            session()->flash('message', 'Photo successfully added.');
+             return redirect()->route('galleries');
+    }
+
+    public function deleteImage($id){
+        $delete = Gallery::find($id);
+        if ($delete) {
+            $delete->delete();
+            $this->showSuccesNotification = true;
+            session()->flash('message', 'Photo successfully deleted.');
+            return redirect()->route('galleries');
+        }
+    
     }
 
     public function render()
