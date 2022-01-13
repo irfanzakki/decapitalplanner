@@ -194,7 +194,7 @@ img.hover-shadow {
                 @else 
                     @foreach ($gallery as $key => $item)
                         <div class="col-md-2 pb-3">
-                            <img src="./../assets_frontend/gallery/{{$item->filename}}" class="myImg img-thumbnail" alt="{{$item->description}}">
+                            <img src="{{asset('storage/assets_frontend/gallery/'.$item->filename)}}" class="myImg img-thumbnail" alt="{{$item->description}}">
                             
                         </div>
                     @endforeach
